@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nivin Kallingal — Digital Marketing Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --purple: #5b47e0;
+  --purple-dark: #3d2db5;
+  --purple-light: #ede9fb;
+  --purple-mid: #7c6be8;
+  --orange: #f5a623;
+  --teal: #2ec4b6;
+  --ink: #1a1a2e;
+  --muted: #6b6b8a;
+  --surface: #f7f6ff;
+  --white: #ffffff;
+  --border: rgba(91,71,224,0.12);
+  --nav-h: 70px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 2px 20px rgba(91,71,224,0.08);
+}
+.nav-logo { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--purple); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--ink); font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--purple); }
+.nav-cta {
+  background: var(--purple); color: var(--white); border: none;
+  padding: 0.6rem 1.5rem; font-family: 'Nunito', sans-serif; font-size: 0.875rem; font-weight: 700;
+  border-radius: 6px; cursor: pointer;
+  box-shadow: 0 4px 15px rgba(91,71,224,0.35);
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-cta:hover { background: var(--purple-dark); transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; padding-top: var(--nav-h);
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; position: relative; overflow: hidden;
+  background: var(--white);
+}
+.hero-bg-circle {
+  position: absolute; border-radius: 50%; pointer-events: none;
+}
+.hero-left { padding: 6vw 3vw 6vw 7vw; position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 8px;
+}
+.hero-eyebrow::before { content: ''; width: 20px; height: 3px; background: var(--purple); border-radius: 2px; }
+.hero-h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.6rem, 4.8vw, 4rem);
+  font-weight: 800; line-height: 1.1; color: var(--purple); margin-bottom: 1.2rem;
+}
+.hero-sub { font-size: 1.05rem; font-weight: 700; color: var(--ink); line-height: 1.6; max-width: 420px; margin-bottom: 2.2rem; }
+.hero-sub span { color: var(--purple); }
+.hero-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.btn-purple {
+  background: var(--purple); color: var(--white); border: 2px solid var(--purple);
+  padding: 0.8rem 2rem; font-size: 0.875rem; font-weight: 800;
+  border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(91,71,224,0.35); transition: all 0.2s;
+}
+.btn-purple:hover { background: var(--purple-dark); border-color: var(--purple-dark); transform: translateY(-2px); }
+.btn-outline {
+  color: var(--purple); border: 2px solid var(--purple); background: transparent;
+  padding: 0.8rem 2rem; font-size: 0.875rem; font-weight: 800;
+  border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block;
+  letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--purple-light); transform: translateY(-2px); }
+.hero-badges { display: flex; gap: 0.8rem; margin-top: 2.2rem; flex-wrap: wrap; }
+.badge {
+  background: var(--purple-light); color: var(--purple-dark);
+  border-radius: 50px; padding: 0.4rem 1rem;
+  font-size: 0.78rem; font-weight: 700;
+  display: flex; align-items: center; gap: 5px;
+}
+.hero-right {
+  position: relative; display: flex; justify-content: center; align-items: flex-end;
+  padding: 4vw 3vw 0; min-height: calc(100vh - var(--nav-h));
+}
+.hero-blob-svg { position: absolute; bottom: 0; left: 10%; right: 10%; height: 80%; z-index: 0; }
+.hero-photo {
+  position: relative; z-index: 2; max-height: 82vh; max-width: 100%;
+  object-fit: contain; object-position: bottom;
+  filter: drop-shadow(0 20px 40px rgba(91,71,224,0.18));
+  animation: heroFloat 4s ease-in-out infinite;
+}
+@keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.stat-card {
+  position: absolute; z-index: 3; background: var(--white); border-radius: 14px;
+  padding: 0.9rem 1.2rem; text-align: center;
+  box-shadow: 0 8px 30px rgba(91,71,224,0.15);
+  animation: floatCard 4s ease-in-out infinite;
+}
+.stat-card:nth-child(3) { animation-delay: 1.5s; }
+.stat-card:nth-child(4) { animation-delay: 0.8s; }
+@keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.sc1 { top: 22%; left: 4%; }
+.sc2 { top: 40%; right: 2%; }
+.sc3 { bottom: 22%; left: 6%; }
+.stat-num { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--purple); line-height: 1; }
+.stat-num sup { font-size: 0.9rem; }
+.stat-lbl { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+.dot-acc {
+  position: absolute; border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
+
+/* STRIP */
+.strip { background: var(--purple); padding: 0.9rem 0; overflow: hidden; }
+.strip-inner { display: flex; white-space: nowrap; animation: marquee 30s linear infinite; }
+.strip-inner span { font-weight: 800; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0 1.5rem; }
+.strip-inner .sep { color: rgba(255,255,255,0.35); padding: 0; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* SECTION COMMON */
+.section-tag {
+  display: inline-block; background: var(--purple-light); color: var(--purple);
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1rem;
+}
+.section-h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: var(--ink); line-height: 1.2; margin-bottom: 1rem; }
+.section-h2 span { color: var(--purple); }
+.section-sub { font-size: 0.97rem; color: var(--muted); line-height: 1.7; max-width: 540px; }
+
+/* SERVICES */
+.services { padding: 7vw 7vw; background: var(--surface); }
+.services-header { text-align: center; margin-bottom: 4rem; }
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.service-card {
+  background: var(--white); border-radius: 18px; padding: 2.5rem 2rem; text-align: center;
+  border: 2px solid transparent; box-shadow: 0 4px 20px rgba(91,71,224,0.06);
+  transition: all 0.3s; cursor: default;
+}
+.service-card:hover { border-color: var(--purple); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(91,71,224,0.15); }
+.service-icon-wrap {
+  width: 78px; height: 78px; border-radius: 50%; background: var(--purple-light);
+  margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; transition: background 0.3s, transform 0.3s;
+}
+.service-card:hover .service-icon-wrap { background: var(--purple); transform: scale(1.1); }
+.service-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.75rem; }
+.service-desc { font-size: 0.875rem; line-height: 1.75; color: var(--muted); }
+.service-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--purple); text-decoration: none; transition: gap 0.2s; }
+.service-link:hover { gap: 8px; }
+
+/* ABOUT */
+.about { padding: 7vw 7vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; }
+.about-img-wrap { position: relative; }
+.about-img-bg { position: absolute; inset: 20px 0 0 20px; background: var(--purple-light); border-radius: 24px; z-index: 0; }
+.about-img { position: relative; z-index: 1; width: 100%; border-radius: 20px; object-fit: cover; max-height: 500px; box-shadow: 0 20px 50px rgba(91,71,224,0.18); }
+.exp-chip {
+  position: absolute; z-index: 2; bottom: -20px; right: -20px;
+  background: var(--purple); color: var(--white);
+  border-radius: 16px; padding: 1.2rem 1.5rem; text-align: center;
+  box-shadow: 0 12px 30px rgba(91,71,224,0.4);
+}
+.exp-chip .num { font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1; }
+.exp-chip .lbl { font-size: 0.72rem; font-weight: 700; opacity: 0.85; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.about-right p { font-size: 0.95rem; line-height: 1.8; color: var(--muted); margin-bottom: 1rem; }
+.about-right p strong { color: var(--ink); }
+.skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0 2rem; }
+.skill-tag { background: var(--purple-light); color: var(--purple-dark); border-radius: 50px; padding: 0.35rem 0.9rem; font-size: 0.8rem; font-weight: 700; }
+.about-metrics { display: flex; gap: 2rem; margin: 1.5rem 0 2rem; }
+.metric .n { font-family: 'Poppins', sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--purple); }
+.metric .l { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+/* WHY */
+.why { padding: 7vw 7vw; background: var(--ink); position: relative; overflow: hidden; }
+.why::before {
+  content: ''; position: absolute; top: -200px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(91,71,224,0.2) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none;
+}
+.why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; }
+.why-left .section-tag { background: rgba(91,71,224,0.25); color: #a99cf5; }
+.why-left .section-h2 { color: var(--white); }
+.why-left .section-sub { color: rgba(255,255,255,0.6); }
+.why-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+.why-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 1.5rem 1.8rem;
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  transition: background 0.3s, border-color 0.3s;
+}
+.why-card:hover { background: rgba(91,71,224,0.2); border-color: rgba(91,71,224,0.5); }
+.why-card-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: var(--purple); display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.why-card-title { font-size: 0.97rem; font-weight: 700; color: var(--white); margin-bottom: 0.35rem; }
+.why-card-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+/* TESTIMONIALS */
+.testimonials { padding: 7vw 7vw; background: var(--surface); }
+.testimonials-header { text-align: center; margin-bottom: 4rem; }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; }
+.testi-card {
+  background: var(--white); border-radius: 18px; padding: 2rem 1.8rem;
+  border: 2px solid transparent; box-shadow: 0 4px 20px rgba(91,71,224,0.06);
+  transition: all 0.3s; position: relative;
+}
+.testi-card:hover { border-color: var(--purple); transform: translateY(-4px); }
+.tcard-quote { position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'Poppins', sans-serif; font-size: 4rem; color: var(--purple-light); line-height: 1; font-weight: 900; }
+.testi-stars { color: var(--orange); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1rem; }
+.testi-text { font-size: 0.875rem; line-height: 1.75; color: var(--muted); margin-bottom: 1.5rem; font-style: italic; }
+.testi-author-row { display: flex; align-items: center; gap: 0.75rem; }
+.testi-avatar {
+  width: 42px; height: 42px; border-radius: 50%; background: var(--purple-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 800; color: var(--purple); flex-shrink: 0;
+}
+.testi-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); }
+.testi-role { font-size: 0.78rem; color: var(--muted); }
+
+/* PRICING */
+.pricing { padding: 7vw 7vw; }
+.pricing-header { text-align: center; margin-bottom: 4rem; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.price-card {
+  border-radius: 20px; padding: 2.5rem 2rem; border: 2px solid var(--border);
+  position: relative; background: var(--white);
+  box-shadow: 0 4px 20px rgba(91,71,224,0.06); transition: all 0.3s;
+}
+.price-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(91,71,224,0.15); }
+.price-card.popular { background: var(--purple); border-color: var(--purple); }
+.popular-badge {
+  position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+  background: var(--orange); color: var(--white);
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.35rem 1.2rem; border-radius: 50px; white-space: nowrap;
+}
+.price-tier { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.5rem; }
+.price-card.popular .price-tier { color: rgba(255,255,255,0.7); }
+.price-name { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--ink); margin-bottom: 1.5rem; }
+.price-card.popular .price-name { color: var(--white); }
+.price-divider { height: 1px; background: var(--border); margin: 1.2rem 0; }
+.price-card.popular .price-divider { background: rgba(255,255,255,0.15); }
+.price-features { list-style: none; margin-bottom: 2rem; }
+.price-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.875rem; color: var(--muted); padding: 0.4rem 0; line-height: 1.4; }
+.price-card.popular .price-features li { color: rgba(255,255,255,0.8); }
+.price-features li::before { content: '✓'; color: var(--purple); font-weight: 800; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
+.price-card.popular .price-features li::before { color: var(--orange); }
+.btn-price {
+  width: 100%; padding: 0.9rem; border-radius: 10px;
+  font-family: 'Nunito', sans-serif; font-size: 0.875rem; font-weight: 800;
+  letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;
+  border: 2px solid var(--purple); color: var(--purple); background: transparent; transition: all 0.2s;
+}
+.btn-price:hover { background: var(--purple); color: var(--white); }
+.price-card.popular .btn-price { background: var(--white); color: var(--purple); border-color: var(--white); }
+.price-card.popular .btn-price:hover { background: transparent; color: var(--white); }
+
+/* PORTFOLIO */
+.portfolio { padding: 7vw 7vw; background: var(--surface); }
+.portfolio-header { text-align: center; margin-bottom: 4rem; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; }
+.portfolio-item {
+  background: var(--white); border-radius: 14px; padding: 1.5rem 1rem; text-align: center;
+  border: 2px solid transparent; font-size: 0.875rem; font-weight: 700; color: var(--ink);
+  box-shadow: 0 2px 12px rgba(91,71,224,0.05); transition: all 0.25s; cursor: default;
+}
+.portfolio-item:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(91,71,224,0.12); }
+.portfolio-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+
+/* CTA */
+.cta-band {
+  background: var(--purple); padding: 6vw 7vw;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+}
+.cta-band::after {
+  content: ''; position: absolute; right: -100px; top: -150px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none;
+}
+.cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--white); line-height: 1.2; }
+.cta-band p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-top: 0.5rem; }
+.btn-white {
+  background: var(--white); color: var(--purple); border: 2px solid var(--white);
+  padding: 0.9rem 2.2rem; border-radius: 10px;
+  font-size: 0.875rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+  cursor: pointer; text-decoration: none; display: inline-block; white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: all 0.2s; flex-shrink: 0;
+}
+.btn-white:hover { background: transparent; color: var(--white); transform: translateY(-2px); }
+
+/* BLOG */
+.blog { padding: 7vw 7vw; }
+.blog-header { text-align: center; margin-bottom: 4rem; }
+.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.blog-card {
+  background: var(--white); border-radius: 18px; overflow: hidden;
+  border: 2px solid transparent; box-shadow: 0 4px 20px rgba(91,71,224,0.06); transition: all 0.3s;
+}
+.blog-card:hover { border-color: var(--purple); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(91,71,224,0.14); }
+.blog-img { height: 190px; overflow: hidden; background: var(--purple-light); }
+.blog-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.blog-card:hover .blog-img img { transform: scale(1.05); }
+.blog-body { padding: 1.5rem; }
+.blog-tag {
+  display: inline-block; background: var(--purple-light); color: var(--purple);
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.25rem 0.8rem; border-radius: 50px; margin-bottom: 0.6rem;
+}
+.blog-date { font-size: 0.76rem; color: var(--muted); margin-bottom: 0.5rem; }
+.blog-title { font-size: 0.95rem; font-weight: 700; color: var(--ink); line-height: 1.45; margin-bottom: 1rem; }
+.blog-link { font-size: 0.82rem; color: var(--purple); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: gap 0.2s; }
+.blog-link:hover { gap: 8px; }
+
+/* FAQ */
+.faq { padding: 7vw 7vw; background: var(--surface); display: grid; grid-template-columns: 1fr 1.5fr; gap: 6vw; align-items: start; }
+.faq-contact-info { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.faq-contact-info a {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.9rem; font-weight: 600; color: var(--ink); text-decoration: none; transition: color 0.2s;
+}
+.faq-contact-info a:hover { color: var(--purple); }
+.faq-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+.faq-item { border-bottom: 1.5px solid var(--border); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 0; cursor: pointer;
+  font-size: 0.95rem; font-weight: 700; color: var(--ink); transition: color 0.2s;
+}
+.faq-q:hover { color: var(--purple); }
+.faq-toggle {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--purple-light); color: var(--purple);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; font-weight: 800; flex-shrink: 0;
+  transition: background 0.2s, transform 0.3s;
+}
+.faq-q.open .faq-toggle { background: var(--purple); color: var(--white); transform: rotate(45deg); }
+.faq-a { font-size: 0.9rem; line-height: 1.75; color: var(--muted); max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; }
+.faq-a.open { max-height: 200px; padding-bottom: 1.2rem; }
+
+/* FOOTER */
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.6);
+  padding: 5vw 7vw 2rem;
+  display: grid; grid-template-columns: 1.8fr 1fr 1fr 1.2fr; gap: 3rem;
+}
+.footer-logo { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--white); margin-bottom: 1rem; display: block; }
+.footer-logo span { color: var(--purple-mid); }
+.footer-brand p { font-size: 0.875rem; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 280px; }
+.footer-social { display: flex; gap: 0.6rem; margin-top: 1.2rem; }
+.social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 800; transition: background 0.2s; }
+.social-btn:hover { background: var(--purple); color: var(--white); }
+.footer-h { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.2rem; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 0.55rem; }
+footer ul a { text-decoration: none; font-size: 0.875rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+footer ul a:hover { color: var(--purple-mid); }
+.footer-contact-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; color: rgba(255,255,255,0.45); margin-bottom: 0.7rem; }
+.footer-contact-item a { color: rgba(255,255,255,0.45); text-decoration: none; }
+.footer-contact-item a:hover { color: var(--purple-mid); }
+.footer-bottom { background: var(--ink); text-align: center; padding: 1.2rem 7vw; font-size: 0.8rem; color: rgba(255,255,255,0.25); border-top: 1px solid rgba(255,255,255,0.07); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .hero, .about, .why-inner, .faq { grid-template-columns: 1fr; }
+  .hero-right { min-height: 55vw; padding: 2vw 5vw; }
+  .sc1 { top: 5%; left: 5%; } .sc2 { top: 5%; right: 5%; } .sc3 { display: none; }
+  .services-grid, .testi-grid, .pricing-grid, .blog-grid { grid-template-columns: 1fr 1fr; }
+  .portfolio-grid { grid-template-columns: repeat(2,1fr); }
+  footer { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .nav-links { display: none; }
+}
+@media (max-width: 580px) {
+  .services-grid, .testi-grid, .pricing-grid, .blog-grid { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; }
+  .cta-band { flex-direction: column; align-items: flex-start; }
+  .about-metrics { gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">NIVIN <span>KALLINGAL</span></a>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">My Portfolio</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact Me</a></li>
+  </ul>
+  <button class="nav-cta" onclick="window.open('https://wa.me/+917012642677','_blank')">Contact Today</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circle" style="width:450px;height:450px;background:radial-gradient(circle,rgba(91,71,224,0.07),transparent 70%);top:-100px;left:-120px;"></div>
+  <div class="hero-bg-circle" style="width:300px;height:300px;background:radial-gradient(circle,rgba(91,71,224,0.05),transparent 70%);bottom:-80px;left:80px;"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">Nivin Kallingal</div>
+    <h1 class="hero-h1">Digital Marketing<br>Consultant</h1>
+    <p class="hero-sub">Affordable SEO &amp; DM Plans Trusted by <span>100+ Clients</span> with a <span>99% Success Rate!</span></p>
+    <div class="hero-actions">
+      <a href="https://wa.me/+917012642677" class="btn-purple" target="_blank">Contact Today</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">🏆 6+ Years Experience</span>
+      <span class="badge">✅ 99% Success Rate</span>
+      <span class="badge">👥 100+ Happy Clients</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <svg class="hero-blob-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path fill="#ede9fb" d="M420,320 C450,260 470,180 430,120 C390,60 300,30 220,50 C140,70 80,140 70,220 C60,300 100,390 170,430 C240,470 320,470 380,440 C410,425 390,380 420,320Z"/>
+    </svg>
+    <img class="hero-photo"
+      src="https://nivinkallingal.in/wp-content/uploads/2025/09/unnamed-1.png"
+      alt="Nivin Kallingal — Digital Marketing Consultant"
+      onerror="this.style.opacity=0">
+    <div class="stat-card sc1">
+      <div class="stat-num">6<sup>+</sup></div>
+      <div class="stat-lbl">Years Exp.</div>
+    </div>
+    <div class="stat-card sc2">
+      <div class="stat-num">100<sup>+</sup></div>
+      <div class="stat-lbl">Clients</div>
+    </div>
+    <div class="stat-card sc3">
+      <div class="stat-num">99<sup>%</sup></div>
+      <div class="stat-lbl">Success</div>
+    </div>
+    <div class="dot-acc" style="width:10px;height:10px;background:#f5a623;top:32%;right:8%;"></div>
+    <div class="dot-acc" style="width:7px;height:7px;background:#2ec4b6;bottom:28%;right:12%;animation-delay:1s;"></div>
+    <div class="dot-acc" style="width:8px;height:8px;background:#e74c3c;top:58%;right:28%;animation-delay:0.5s;"></div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span>SEO</span><span class="sep">◆</span><span>Social Media Marketing</span><span class="sep">◆</span><span>Google Ads / PPC</span><span class="sep">◆</span><span>Content Marketing</span><span class="sep">◆</span><span>Local SEO</span><span class="sep">◆</span><span>GMB Optimization</span><span class="sep">◆</span><span>Branding</span><span class="sep">◆</span><span>AEO Services</span><span class="sep">◆</span><span>SEO</span><span class="sep">◆</span><span>Social Media Marketing</span><span class="sep">◆</span><span>Google Ads / PPC</span><span class="sep">◆</span><span>Content Marketing</span><span class="sep">◆</span><span>Local SEO</span><span class="sep">◆</span><span>GMB Optimization</span><span class="sep">◆</span><span>Branding</span><span class="sep">◆</span><span>AEO Services</span><span class="sep">◆</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="section-tag reveal">Digital Marketing Services</div>
+    <h2 class="section-h2 reveal d1">How Can I <span>Help?</span></h2>
+    <p class="section-sub reveal d2" style="margin:0 auto;">Comprehensive digital marketing solutions designed to grow your business and maximize ROI.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon-wrap">🔍</div>
+      <div class="service-title">Search Engine Optimization</div>
+      <p class="service-desc">Boost your online visibility with data-driven SEO strategies. From keyword research to technical optimizations, I ensure your website ranks higher and attracts quality organic traffic.</p>
+      <a href="#contact" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card reveal d1">
+      <div class="service-icon-wrap">📱</div>
+      <div class="service-title">Social Media Marketing</div>
+      <p class="service-desc">Engage, grow, and convert with a tailored social media approach. Content planning, audience targeting, and platform-specific campaigns that align with your brand's voice.</p>
+      <a href="#contact" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="service-icon-wrap">🎯</div>
+      <div class="service-title">Branding</div>
+      <p class="service-desc">Build a brand that stands out, resonates, and grows. I craft your identity, voice, and strategy with precision — turning your brand into a lasting legacy.</p>
+      <a href="#contact" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card reveal d1">
+      <div class="service-icon-wrap">✍️</div>
+      <div class="service-title">Content Marketing</div>
+      <p class="service-desc">Turn content into your most powerful growth tool. Data-driven stories that engage, educate, and convert — tailored to your audience and goals.</p>
+      <a href="#contact" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="service-icon-wrap">⚡</div>
+      <div class="service-title">Google Ads / PPC</div>
+      <p class="service-desc">Use data-driven strategies to maximize ad spend and boost ROI. Track PPC performance with clear metrics — measure clicks, conversions, and ROI.</p>
+      <a href="#contact" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card reveal d3">
+      <div class="service-icon-wrap">📊</div>
+      <div class="service-title">Reporting &amp; Analysis</div>
+      <p class="service-desc">Transparent, actionable reports that matter. I break down complex data into clear insights, helping you understand performance and refine strategies continuously.</p>
+      <a href="#contact" class="service-link">Learn More →</a>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:3rem;"><a href="#contact" class="btn-purple">View All Services</a></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img-wrap reveal">
+    <div class="about-img-bg"></div>
+    <img class="about-img" src="https://nivinkallingal.in/wp-content/uploads/2025/09/unnamed-1.png" alt="Nivin Kallingal" onerror="this.style.minHeight='300px';this.style.background='var(--purple-light)'">
+    <div class="exp-chip"><div class="num">6+</div><div class="lbl">Years of<br>Experience</div></div>
+  </div>
+  <div class="about-right">
+    <div class="section-tag reveal">About Me</div>
+    <h2 class="section-h2 reveal d1">Digital Marketing Consultant<br><span>&amp; Growth Strategist</span></h2>
+    <p class="reveal d2">Hi, I'm <strong>Nivin Kallingal</strong>, a passionate Digital Marketing Consultant with 6+ years of experience crafting data-driven strategies for business growth.</p>
+    <p class="reveal d2">I help brands turn clicks into customers and ideas into impactful campaigns — specializing in measurable success, driving leads, and sustainable growth.</p>
+    <p class="reveal d2">Whether you need to dominate search rankings, create engaging social media campaigns, or run high-converting ads, I tailor solutions to your unique business goals.</p>
+    <div class="skills-list reveal d3">
+      <span class="skill-tag">SEO Expert</span><span class="skill-tag">Google Ads</span><span class="skill-tag">Social Media</span><span class="skill-tag">Content Strategy</span><span class="skill-tag">Analytics</span><span class="skill-tag">Local SEO</span><span class="skill-tag">GMB Optimization</span>
+    </div>
+    <div class="about-metrics reveal d3">
+      <div class="metric"><div class="n">100+</div><div class="l">Happy Clients</div></div>
+      <div class="metric"><div class="n">99%</div><div class="l">Success Rate</div></div>
+      <div class="metric"><div class="n">50+</div><div class="l">Projects Done</div></div>
+    </div>
+    <a href="https://wa.me/+917012642677" class="btn-purple reveal d3" target="_blank" style="width:fit-content">Get Free Consultation →</a>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section class="why">
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="section-tag reveal">Why Choose Me?</div>
+      <h2 class="section-h2 reveal d1">Outstanding <span>Digital</span> Experience</h2>
+      <p class="section-sub reveal d2">With 6+ years in digital marketing, I bring expertise that blends creativity with data-driven strategy — delivering real growth and measurable results.</p>
+      <br><br>
+      <a href="#contact" class="btn-purple reveal d3" style="width:fit-content">Discover More →</a>
+    </div>
+    <div class="why-cards">
+      <div class="why-card reveal"><div class="why-card-icon">🚀</div><div><div class="why-card-title">For Startups &amp; Growing Businesses</div><p class="why-card-desc">Custom digital marketing plans to fit your goals and budget — from brand awareness to lead generation, compete smarter not harder.</p></div></div>
+      <div class="why-card reveal d1"><div class="why-card-icon">📈</div><div><div class="why-card-title">Strategic Campaign Execution</div><p class="why-card-desc">Marketing that works for you. I launch, optimize, and scale campaigns so every dollar maximizes ROI and drives sustainable growth.</p></div></div>
+      <div class="why-card reveal d2"><div class="why-card-icon">🤝</div><div><div class="why-card-title">Your Trusted Digital Partner</div><p class="why-card-desc">Transparency, collaboration, and results define my approach. I'm your long-term ally navigating the digital landscape.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-header">
+    <div class="section-tag reveal">Testimonials</div>
+    <h2 class="section-h2 reveal d1">What My <span>Clients Say</span></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="tcard-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">We struggled with SEO for years until Nivin stepped in. His data-driven approach doubled our organic traffic in just 3 months. Communication is flawless and he delivers beyond expectations.</p>
+      <div class="testi-author-row"><div class="testi-avatar">RM</div><div><div class="testi-name">Rajesh M.</div><div class="testi-role">E-commerce Business Owner</div></div></div>
+    </div>
+    <div class="testi-card reveal d1">
+      <div class="tcard-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Nivin's Facebook Ad strategy slashed our cost-per-lead by 60% while increasing conversions. He's transparent, proactive, and truly understands scaling businesses. A game-changer!</p>
+      <div class="testi-author-row"><div class="testi-avatar">PS</div><div><div class="testi-name">Priya S.</div><div class="testi-role">Startup Founder</div></div></div>
+    </div>
+    <div class="testi-card reveal d2">
+      <div class="tcard-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Nivin doesn't just run campaigns — he aligns them with long-term goals. Our social media engagement skyrocketed and his penalty recovery saved us from a Google disaster.</p>
+      <div class="testi-author-row"><div class="testi-avatar">DS</div><div><div class="testi-name">Dr. Sujal</div><div class="testi-role">Healthcare Provider</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header">
+    <div class="section-tag reveal">Pricing Plans</div>
+    <h2 class="section-h2 reveal d1">The Best Solutions for <span>Our Clients</span></h2>
+    <p class="section-sub reveal d2" style="margin:0 auto;">Transparent, affordable SEO packages with no hidden fees.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-tier">Starter</div>
+      <div class="price-name">Basic Plan</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Website &amp; Competitor Analysis</li><li>Content Duplicity Check</li><li>On-Page SEO Optimization</li><li>Meta Tags &amp; URL Structure</li><li>Google Analytics Setup</li><li>Social Sharing &amp; Directory Links</li><li>4 Blog Posts / Month</li><li>Monthly Ranking Report</li>
+      </ul>
+      <button class="btn-price" onclick="window.open('https://wa.me/+917012642677','_blank')">Get Started</button>
+    </div>
+    <div class="price-card popular reveal d1">
+      <div class="popular-badge">⭐ Most Popular</div>
+      <div class="price-tier">Growth</div>
+      <div class="price-name">Standard Plan</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Up to 25 Keywords</li><li>Full On-Page SEO Suite</li><li>GMB Setup &amp; Optimization</li><li>Google Map Integration</li><li>Local Citations &amp; Classifieds</li><li>6 Blog Posts + 5 Onsite Blogs</li><li>Analytics + Search Console</li><li>Monthly Keyword Report</li>
+      </ul>
+      <button class="btn-price" onclick="window.open('https://wa.me/+917012642677','_blank')">Get Started</button>
+    </div>
+    <div class="price-card reveal d2">
+      <div class="price-tier">Enterprise</div>
+      <div class="price-name">Premium Plan</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>50+ Keywords</li><li>Advanced Technical SEO</li><li>Full GMB + Local SEO Suite</li><li>Competitor Backlink Research</li><li>8–10 Blogs &amp; Articles / Month</li><li>Image &amp; PDF Submissions</li><li>Full Analytics Dashboard</li><li>Priority Support</li>
+      </ul>
+      <button class="btn-price" onclick="window.open('https://wa.me/+917012642677','_blank')">Get Started</button>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <div class="section-tag reveal">Previous Projects</div>
+    <h2 class="section-h2 reveal d1">My <span>Portfolio</span></h2>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-item reveal"><div class="portfolio-icon">🎬</div>Eagle Productions</div>
+    <div class="portfolio-item reveal d1"><div class="portfolio-icon">🚗</div>Carverify</div>
+    <div class="portfolio-item reveal d2"><div class="portfolio-icon">🎓</div>Arkaiz Study Abroad</div>
+    <div class="portfolio-item reveal d3"><div class="portfolio-icon">🌍</div>Zadokz Study Abroad</div>
+    <div class="portfolio-item reveal"><div class="portfolio-icon">💊</div>MAcare</div>
+    <div class="portfolio-item reveal d1"><div class="portfolio-icon">🚪</div>Cuirass Doors</div>
+    <div class="portfolio-item reveal d2"><div class="portfolio-icon">🛒</div>E-commerce Brands</div>
+    <div class="portfolio-item reveal d3"><div class="portfolio-icon">🏥</div>Healthcare Providers</div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div><h2>Get a Free Quote?</h2><p>Ready to elevate your digital presence? Let's craft a customized plan for your business.</p></div>
+  <a href="https://wa.me/+917012642677" class="btn-white" target="_blank">Contact Today →</a>
+</div>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="blog-header">
+    <div class="section-tag reveal">Latest Insights</div>
+    <h2 class="section-h2 reveal d1">Read <span>Latest News</span></h2>
+    <p class="section-sub reveal d2" style="margin:0 auto;">Stay ahead with cutting-edge digital marketing insights and trends.</p>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card reveal">
+      <div class="blog-img"><img src="https://nivinkallingal.in/wp-content/uploads/2026/04/top-view-tools-marketing-scaled-540x360.jpg" alt="SEO 2026"></div>
+      <div class="blog-body"><span class="blog-tag">SEO</span><div class="blog-date">3 April 2026</div><div class="blog-title">SEO Services in 2026: What's Changed, What Works &amp; Why You Need an Expert</div><a href="https://nivinkallingal.in/seo-services-in-2026-whats-changed-what-works-why-you-need-an-expert/" class="blog-link" target="_blank">Read More →</a></div>
+    </div>
+    <div class="blog-card reveal d1">
+      <div class="blog-img"><img src="https://nivinkallingal.in/wp-content/uploads/2026/01/map-lying-wooden-table-scaled-540x352.jpg" alt="Digital Marketing"></div>
+      <div class="blog-body"><span class="blog-tag">Digital Marketing</span><div class="blog-date">1 March 2026</div><div class="blog-title">Professional Digital Marketing Expert Thrissur | Nivin Kallingal</div><a href="https://nivinkallingal.in/professional-digital-marketing-expert-thrissur/" class="blog-link" target="_blank">Read More →</a></div>
+    </div>
+    <div class="blog-card reveal d2">
+      <div class="blog-img"><img src="https://nivinkallingal.in/wp-content/uploads/2025/09/6859042-1-scaled-540x360.jpg" alt="Strategist"></div>
+      <div class="blog-body"><span class="blog-tag">Strategy</span><div class="blog-date">25 February 2026</div><div class="blog-title">Digital Marketing Strategist in Thrissur | Nivin Kallingal</div><a href="https://nivinkallingal.in/digital-marketing-strategist-in-thrissur/" class="blog-link" target="_blank">Read More →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ + CONTACT -->
+<section class="faq" id="contact">
+  <div class="faq-left">
+    <div class="section-tag reveal">FAQ</div>
+    <h2 class="section-h2 reveal d1">Frequently Asked <span>Questions</span></h2>
+    <p class="section-sub reveal d2">Have questions? I'm here to help. Reach out directly for a free consultation.</p>
+    <div class="faq-contact-info reveal d3">
+      <a href="tel:+917012642677"><div class="faq-icon">📞</div>+91 701 264 2677</a>
+      <a href="mailto:emailme@nivinkallingal.in"><div class="faq-icon">✉️</div>emailme@nivinkallingal.in</a>
+      <a href="#"><div class="faq-icon">📍</div>Thrissur, Kerala, India</a>
+    </div>
+    <a href="https://wa.me/+917012642677" class="btn-purple reveal d3" target="_blank" style="width:fit-content;margin-top:1.5rem">WhatsApp Me →</a>
+  </div>
+  <div class="faq-right">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What services do you offer as a Digital Marketing Consultant? <span class="faq-toggle">+</span></div><div class="faq-a">I provide end-to-end digital marketing solutions — SEO, Google Ads, Meta Ads, social media marketing, content strategy, email marketing, and conversion rate optimization. All data-driven for measurable results.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do you measure the success of a campaign? <span class="faq-toggle">+</span></div><div class="faq-a">I track KPIs like ROI, conversion rates, cost per lead (CPL), click-through rates (CTR), and engagement metrics. Customized dashboards and regular reports ensure full transparency.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What industries have you worked with? <span class="faq-toggle">+</span></div><div class="faq-a">I've helped businesses across e-commerce, healthcare, hospitality, education, and professional services — crafting strategies tailored to each industry's unique challenges and opportunities.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long before I see results from SEO? <span class="faq-toggle">+</span></div><div class="faq-a">SEO typically shows meaningful results in 3–6 months. Paid ads can show results within days. I set realistic timelines and provide monthly progress reports so you always know where you stand.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I get started working with you? <span class="faq-toggle">+</span></div><div class="faq-a">Simply reach out via WhatsApp, call, or email for a free consultation. We'll discuss your goals, analyze your current strategy, and I'll create a customized plan to grow your business.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <span class="footer-logo">NIVIN <span>KALLINGAL</span></span>
+    <p>Digital Marketing Consultant based in Thrissur, Kerala with 6+ years helping businesses grow online with data-driven SEO, PPC, and digital strategies.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/nivinkallingaldigital" class="social-btn" target="_blank">f</a>
+      <a href="#" class="social-btn">in</a>
+      <a href="#" class="social-btn">tw</a>
+      <a href="#" class="social-btn">ig</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-h">Quick Links</div>
+    <ul>
+      <li><a href="#">Home</a></li><li><a href="#about">About Me</a></li><li><a href="#portfolio">My Portfolio</a></li><li><a href="#">Service Area</a></li><li><a href="#blog">Blog</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-h">Services</div>
+    <ul>
+      <li><a href="#">SEO Services</a></li><li><a href="#">Local SEO</a></li><li><a href="#">Google Ads / PPC</a></li><li><a href="#">Social Media</a></li><li><a href="#">GMB Optimization</a></li><li><a href="#">AEO Services</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-h">Contact Me</div>
+    <div class="footer-contact-item">📞 <a href="tel:+917012642677">+91 701 264 2677</a></div>
+    <div class="footer-contact-item">✉️ <a href="mailto:emailme@nivinkallingal.in">emailme@nivinkallingal.in</a></div>
+    <div class="footer-contact-item">📍 Thrissur, Kerala, India</div>
+  </div>
+</footer>
+<div class="footer-bottom">© 2024 Nivin Kallingal. All Rights Reserved. | Best Digital Marketing Consultant in Thrissur</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+
+  function toggleFaq(el) {
+    const a = el.nextElementSibling;
+    const isOpen = a.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(x => x.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(x => x.classList.remove('open'));
+    if (!isOpen) { a.classList.add('open'); el.classList.add('open'); }
+  }
+</script>
+</body>
+</html>
